@@ -9,6 +9,7 @@ export const ErrorPage = () => {
     const error = useRouteError();
     let errorMessage;
 
+    // Check at runtime 
     if (error && typeof error === "object" && "statusText" in error) {
         errorMessage = `${error.statusText}`;
     }
