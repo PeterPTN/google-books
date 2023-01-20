@@ -1,11 +1,21 @@
-import { useState, useEffect } from 'react';
+import { Homepage } from './containers/Homepage/Homepage';
+import { useState } from 'react';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Call custom hook for data search
+
+  const handleSubmit = (input: string) => {
+    setSearchQuery(input)
+  }
+
   return (
-    <div>
-      <h1>Hello world!</h1>
-    </div>
+    <>
+      <Homepage onSearchSubmit={handleSubmit} />
+    </>
   )
 }
 
 export default App
+

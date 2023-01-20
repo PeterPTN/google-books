@@ -1,24 +1,25 @@
-import { useRouteError } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
+import { useTypeSafeRouteError } from '../hooks/useTypeSafeRouteError';
+import styles from './Error.module.scss';
 
-interface StoreErrorTypes {
-    error: string,
-    statusText: string,
+interface ErrorTypes {
+    data: string,
+    error: {
+        message: string
+    }
 }
 
 export const ErrorPage = () => {
-    const error = useRouteError();
-    let errorMessage;
-
-    // Check at runtime 
-    if (error && typeof error === "object" && "statusText" in error) {
-        errorMessage = `${error.statusText}`;
-    }
+    const errorObject: ErrorTypes = useTypeSafeRouteError(useRouteError);
+    const errorMessage = errorObject.error.message || errorObject.data;
 
     return (
-        <div>
+        <div className={styles.Error}>
             <h1>Oops!</h1>
-            <p>An unexpected error has occured.</p>
+            <p>An unexpected error has occured:</p>
             <p>{errorMessage}</p>
+            <h2>¯\_(ツ)_/¯</h2>
+            <Link className={styles.Button} to="/">Back to homepage</Link>
         </div>
     )
 }

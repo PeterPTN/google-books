@@ -1,0 +1,136 @@
+@use "../../styles/global.scss" as *;
+
+.Container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-size: 1rem;
+    row-gap: 1.5rem;
+    background: linear-gradient(to bottom, rgb(250, 250, 250) 75%, rgb(240, 241, 241));
+}
+
+.Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 26vh;
+    cursor: default;
+    position: relative;
+
+    h1:first-letter {
+        color: white;
+        text-shadow:
+            2px 2px 1px $primary-blue,
+            0px 0px 0px black;
+    }
+
+    h1 {
+        color: $primary-blue;
+        font-size: 10rem;
+        font-style: italic;
+        font-weight: 100;
+    }
+
+    label {
+        position: relative;
+        font-style: italic;
+        top: .5em;
+        user-select: none;
+        font-size: .9em;
+        opacity: .4;
+        letter-spacing: 1px;
+        z-index: 100;
+    }
+
+    img {
+        position: absolute;
+        opacity: .015;
+        width: 60em;
+    }
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    row-gap: .5em;
+    width: 30em;
+    position: relative;
+    z-index: 100;
+    row-gap: .5em;
+
+    input {
+        border-radius: 1em;
+    }
+
+    img {
+        position: absolute;
+        height: 2em;
+        right: .5em;
+        bottom: 2.8em;
+        background-color: white;
+        cursor: pointer;
+        transition: all .15s
+    }
+
+    img:active {
+        transform: scale(.95);
+    }
+}
+
+.Searchbar {
+    font-size: 1.1em;
+    align-self: stretch;
+    padding: .5em .75em;
+    border-width: 1.5px;
+    border-color:
+        rgb(0, 0, 0, .05) rgb(0, 0, 0, .05) rgb(0, 0, 0, .35) rgb(0, 0, 0, .35);
+
+    &:focus {
+        outline: none;
+        box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.Submit {
+    padding: .5rem;
+    background-color: $primary-blue;
+    color: white;
+    filter: brightness(.975);
+    transition: all .15s;
+    border: 1px solid transparent;
+    cursor: pointer;
+    box-shadow: -2px 2px 1px rgba(15, 78, 161, 0.8);
+
+    &:active {
+        transform: scale(.975);
+    }
+}
+
+.About {
+    position: absolute;
+    left: 5vw;
+    top: 2.5vw;
+    font-size: 2rem;
+    color: white;
+    text-shadow:
+        0px 0px 1px black,
+        0px 0px .75em rgb(197, 215, 233);
+    transition: all .1s;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        text-shadow:
+            0px 0px 1px black
+        ;
+    }
+
+    &:active {
+        transform: scale(.975)
+    }
+}

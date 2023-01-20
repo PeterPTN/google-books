@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 /* Global CSS Styles + Reset */
 :root {
   font-size: 1rem;
@@ -12,6 +14,7 @@
   text-decoration: none;
   scroll-behavior: smooth;
   list-style: none;
+  font-family: "Montserrat'", sans-serif;
 }
 
 .text-center {
@@ -39,4 +42,8 @@
   overflow: hidden !important;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2;
+}
+
+body {
+  overflow-y: hidden;
 }
