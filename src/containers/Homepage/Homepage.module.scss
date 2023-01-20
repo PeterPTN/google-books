@@ -22,12 +22,12 @@
     h1:first-letter {
         color: white;
         text-shadow:
-            2px 2px 1px $primary-blue,
+            2px 2px 1px $primary,
             0px 0px 0px black;
     }
 
     h1 {
-        color: $primary-blue;
+        color: $primary;
         font-size: 10rem;
         font-style: italic;
         font-weight: 100;
@@ -97,13 +97,13 @@
 
 .Submit {
     padding: .5rem;
-    background-color: $primary-blue;
+    background-color: $primary;
     color: white;
     filter: brightness(.975);
     transition: all .15s;
     border: 1px solid transparent;
     cursor: pointer;
-    box-shadow: -2px 2px 1px $dark-blue;
+    box-shadow: -2px 2px 1px $secondary;
 
     &:active {
         transform: scale(.975);
@@ -127,7 +127,7 @@
     background-color: transparent;
     cursor: pointer;
     line-height: 2;
-    border-bottom: 3px solid $primary-blue;
+    border-bottom: 3px solid $primary;
     text-shadow:
         0px 0px 1px black;
     padding: 0px 2px;
@@ -140,6 +140,6 @@
 
 .AboutBtnBorder {
     text-shadow:
-        0px 0px 1px rgb(0, 0, 0, .3);
+        0px 0px 1px rgb(0, 0, 0, .5);
     border-color: rgb(180, 180, 180, .35);
 }

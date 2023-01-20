@@ -2,8 +2,8 @@
 
 .Rectangle {
     position: absolute;
-    background-color: grey;
-    opacity: .15;
+    background-color: rgb(180, 180, 180, .25);
+    border-left: 1px solid $gold;
     height: 2rem;
     width: 1rem;
     bottom: -2rem;

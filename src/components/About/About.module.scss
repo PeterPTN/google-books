@@ -3,7 +3,7 @@
 .About {
     font-size: 1rem;
     box-shadow:
-        -2px 2px 1px $primary-blue,
+        -2px 2px 1px $primary,
         0px 0px 1px rgb(100, 100, 100, 0.5);
     border-radius: 2em;
     padding: 1em 2em;
@@ -47,7 +47,7 @@
     }
 
     50% {
-        transform: scale(1.05);
+        transform: scale(1.025);
     }
 
     100% {

@@ -9,7 +9,8 @@ import magGlass from '../../assets/images/magGlass.svg';
 import About from '../../components/About/About';
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
 
 interface PropType {
     onSearchSubmit: (input: string) => void;
@@ -18,10 +19,9 @@ interface PropType {
 export const Homepage = ({ onSearchSubmit }: PropType) => {
     const [userInput, setUserInput] = useState("");
     const [displayAbout, setDisplayAbout] = useState(false);
-
+    const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
     const navigate = useNavigate();
 
-    // Add modal of some kind for about
     const handleAboutClick = () => {
         setDisplayAbout(!displayAbout)
     }
@@ -29,15 +29,12 @@ export const Homepage = ({ onSearchSubmit }: PropType) => {
     const handleSearchSubmit = (e: any) => {
         e.preventDefault();
         onSearchSubmit(userInput);
-        navigate("/search")
-        // Move url to searchPage
+        navigate("/search");
     }
 
     const handleUserInput = (e: any) => {
         setUserInput(e.target.value);
     }
-
-    const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
 
     return (
         <main className={styles.Container}>
