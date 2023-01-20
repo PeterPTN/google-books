@@ -1,8 +1,12 @@
 import styles from './Homepage.module.scss';
+
 import Rectangle from '../../assets/Rectangles/Rectangle';
 import recStyles from '../../assets/Rectangles/Rectangles.module.scss';
+
 import openBook from '../../assets/images/openBook.svg';
 import magGlass from '../../assets/images/magGlass.svg';
+
+import About from '../../components/About/About';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
@@ -13,11 +17,13 @@ interface PropType {
 
 export const Homepage = ({ onSearchSubmit }: PropType) => {
     const [userInput, setUserInput] = useState("");
+    const [displayAbout, setDisplayAbout] = useState(false);
+
     const navigate = useNavigate();
 
     // Add modal of some kind for about
     const handleAboutClick = () => {
-        console.log("do things");
+        setDisplayAbout(!displayAbout)
     }
 
     const handleSearchSubmit = (e: any) => {
@@ -31,11 +37,15 @@ export const Homepage = ({ onSearchSubmit }: PropType) => {
         setUserInput(e.target.value);
     }
 
+    const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
 
     return (
         <main className={styles.Container}>
 
-            <button onClick={handleAboutClick} className={styles.About}>about</button>
+            <div className={styles.About}>
+                <button onClick={handleAboutClick} className={AboutBtnStyles}>about</button>
+                <About canDisplay={displayAbout} />
+            </div>
 
             <header className={styles.Header}>
                 <h1>[k]een</h1>

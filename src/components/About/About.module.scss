@@ -1,0 +1,56 @@
+@use "../../styles/global.scss" as *;
+
+.About {
+    font-size: 1rem;
+    box-shadow:
+        -2px 2px 1px $primary-blue,
+        0px 0px 1px rgb(100, 100, 100, 0.5);
+    border-radius: 2em;
+    padding: 1em 2em;
+    opacity: 0;
+    position: relative;
+
+    transition: all .15s;
+    transform: scale(.85);
+    left: -5rem;
+    opacity: 0;
+    visibility: hidden;
+    line-height: 1.5;
+
+    p {
+        color: rgb(0, 0, 0, .75);
+    }
+
+    a {
+        display: block;
+        color: rgb(0, 0, 0, .75);
+        text-decoration: underline;
+        width: fit-content;
+    }
+
+    a:hover {
+        color: black;
+    }
+}
+
+.Opacity {
+    opacity: 1;
+    transform: scale(1);
+    left: 0;
+    visibility: visible;
+    animation: popIn .15s linear;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(.85);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}

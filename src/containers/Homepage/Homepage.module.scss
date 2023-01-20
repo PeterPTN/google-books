@@ -103,7 +103,7 @@
     transition: all .15s;
     border: 1px solid transparent;
     cursor: pointer;
-    box-shadow: -2px 2px 1px rgba(15, 78, 161, 0.8);
+    box-shadow: -2px 2px 1px $dark-blue;
 
     &:active {
         transform: scale(.975);
@@ -114,23 +114,32 @@
     position: absolute;
     left: 5vw;
     top: 2.5vw;
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.AboutBtn {
     font-size: 2rem;
     color: white;
-    text-shadow:
-        0px 0px 1px black,
-        0px 0px .75em rgb(197, 215, 233);
     transition: all .1s;
     border: none;
     background-color: transparent;
     cursor: pointer;
-
-    &:hover {
-        text-shadow:
-            0px 0px 1px black
-        ;
-    }
+    line-height: 2;
+    border-bottom: 3px solid $primary-blue;
+    text-shadow:
+        0px 0px 1px black;
+    padding: 0px 2px;
 
     &:active {
-        transform: scale(.975)
+        transform: scale(.95);
+        border-color: transparent;
     }
+}
+
+.AboutBtnBorder {
+    text-shadow:
+        0px 0px 1px rgb(0, 0, 0, .3);
+    border-color: rgb(180, 180, 180, .35);
 }
