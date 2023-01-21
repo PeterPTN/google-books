@@ -97,36 +97,6 @@
     }
 }
 
-
-.Searchbar {
-    font-size: 1.1em;
-    align-self: stretch;
-    padding: .5em .75em;
-    border-width: 1.5px;
-    border-color:
-        rgb(0, 0, 0, .05) rgb(0, 0, 0, .05) rgb(0, 0, 0, .35) rgb(0, 0, 0, .35);
-
-    &:focus {
-        outline: none;
-        box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
-    }
-}
-
-.Submit {
-    padding: .5rem;
-    background-color: $primary;
-    color: white;
-    filter: brightness(.975);
-    transition: all .15s;
-    border: 1px solid transparent;
-    cursor: pointer;
-    box-shadow: -2px 2px 1px $secondary;
-
-    &:active {
-        transform: scale(.975);
-    }
-}
-
 .About {
     position: absolute;
     left: 5vw;

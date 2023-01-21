@@ -27,6 +27,7 @@
 
 /* Single line truncate */
 .truncate {
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,8 +35,8 @@
 
 /* Multi line truncate */
 .multi-truncate {
-  line-height: 2rem;
-  max-height: 4rem;
+  line-height: 1.5rem;
+  max-height: 3rem;
   -webkit-box-orient: vertical;
   display: block;
   display: -webkit-box;

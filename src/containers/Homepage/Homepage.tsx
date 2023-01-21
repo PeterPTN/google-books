@@ -4,18 +4,18 @@ import Rectangle from '../../assets/Rectangles/Rectangle';
 import recStyles from '../../assets/Rectangles/Rectangles.module.scss';
 
 import openBook from '../../assets/images/openBook.svg';
-import magGlass from '../../assets/images/magGlass.svg';
 
 import About from '../../components/About/About';
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
-
+import Form from '../../components/Form/Form';
 
 interface PropType {
     onSearchSubmit: (input: string) => void,
-    onSelect: (id: number) => void
+    onSelect: (id: number) => void,
+    onUserInput: (e: {target: HTMLInputElement } ) => void,
+    userInput: string,
     filterTypes: {
         id: number;
         type: string,
@@ -23,24 +23,12 @@ interface PropType {
     }[]
 }
 
-export const Homepage = ({ onSearchSubmit, onSelect, filterTypes }: PropType) => {
-    const [userInput, setUserInput] = useState("");
+export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, filterTypes, userInput }: PropType) => {
     const [displayAbout, setDisplayAbout] = useState(false);
     const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
-    const navigate = useNavigate();
 
     const handleAboutClick = () => {
         setDisplayAbout(!displayAbout)
-    }
-
-    const handleSearchSubmit = (e: any) => {
-        e.preventDefault();
-        onSearchSubmit(userInput);
-        navigate("/search");
-    }
-
-    const handleUserInput = (e: any) => {
-        setUserInput(e.target.value);
     }
 
     return (
@@ -64,11 +52,7 @@ export const Homepage = ({ onSearchSubmit, onSelect, filterTypes }: PropType) =>
                 ))}
             </div>
 
-            <form className={styles.Form}>
-                <img src={magGlass} onClick={handleSearchSubmit} />
-                <input className={styles.Searchbar} id="input" type="text" autoFocus onChange={handleUserInput} />
-                <input className={styles.Submit} type="submit" value="Search" onClick={handleSearchSubmit} />
-            </form>
+            <Form page="Home" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
 
             <Rectangle type={`${recStyles.RectangleOne} `} />
             <Rectangle type={`${recStyles.RectangleTwo} `} />

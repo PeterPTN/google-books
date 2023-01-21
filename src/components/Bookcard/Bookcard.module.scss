@@ -1,0 +1,27 @@
+.Bookcards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid red;
+    width: 200px;
+    padding: 1rem;
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    img {
+        background-color: rgb(50,50,50, .15);
+        height: 200px;
+        width: 150px;
+        object-fit: contain;
+        margin-top: auto;
+        cursor: pointer;
+    }
+}

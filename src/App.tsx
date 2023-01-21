@@ -1,7 +1,7 @@
 import { Homepage } from './containers/Homepage/Homepage';
 import { useState } from 'react';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import Search from './containers/Search/Search';
+import Search from './containers/Search/Searchpage';
 import { ErrorPage } from './errors/ErrorPage';
 import { SEARCH_FILTERS } from './data/constants';
 
@@ -12,6 +12,7 @@ interface ArrayTypes {
 }
 
 function App() {
+  const [userInput, setUserInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filterTypes, setFilterTypes] = useState(SEARCH_FILTERS);
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -28,6 +29,10 @@ function App() {
     }, []));
   }
 
+  const handleUserInput = (e: { target: HTMLInputElement  }) => {
+    setUserInput(e.target.value);
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,6 +40,8 @@ function App() {
         onSearchSubmit={handleSubmit}
         filterTypes={filterTypes}
         onSelect={handleSelect}
+        onUserInput={handleUserInput}
+        userInput={userInput}
       />,
       errorElement: <ErrorPage />,
     },
@@ -42,6 +49,9 @@ function App() {
       path: "/search",
       element: <Search
         filterTypes={filterTypes}
+        onSearchSubmit={handleSubmit}
+        onUserInput={handleUserInput}
+        userInput={userInput}
         query={searchQuery}
         API_KEY={API_KEY} />,
     }

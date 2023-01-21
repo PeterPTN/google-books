@@ -11,6 +11,8 @@ interface PropTypes {
     }[]
 }
 
+// Add more results
+
 const useGoogleAPIRecall = ({ query, API_KEY, filterTypes, setIsLoading }: PropTypes) => {
     // Change type eventually
     const [data, setData] = useState<any>([]);
@@ -24,8 +26,8 @@ const useGoogleAPIRecall = ({ query, API_KEY, filterTypes, setIsLoading }: PropT
                 await fetch(`https://www.googleapis.com/books/v1/volumes?q=${workingQuery}&key=${key}`);
 
             const responseJson = await response.json();
-            setIsLoading(false);
-            setData(responseJson);
+            setData(responseJson.items);
+            setTimeout(() => setIsLoading(false), 1000);
         } catch (error) {
             console.log(error, "Error message");
         }
@@ -33,14 +35,14 @@ const useGoogleAPIRecall = ({ query, API_KEY, filterTypes, setIsLoading }: PropT
 
     useEffect(() => {
         const type = filterTypes.reduce((filter, filterData) => {
-            if (filterData.selected && filterData.type !== "contains") filter = `in${filterData.type}`;
+            if (filterData.selected && filterData.type !== "includes") filter = `in${filterData.type}`;
             return filter
         }, "");
 
         googleBooksData(query, API_KEY, type)
     }, [query])
 
-    return {data};
+    return { data };
 }
 
 export { useGoogleAPIRecall }

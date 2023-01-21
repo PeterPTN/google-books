@@ -3,7 +3,7 @@ let counter = 0;
 const SEARCH_FILTERS = [
     {
         id: ++counter,
-        type: "contains",
+        type: "includes",
         selected: false
     },
     {

@@ -1,0 +1,32 @@
+.Wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid black;
+    background-color: lightblue;
+
+    &__display {
+        width: 95%;
+        height: 95%;
+        border: 1px solid black;
+        background-color: white;
+        padding: .75em;
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+
+        h1 {
+            font-size: 1.5rem;
+            color: rgb(0, 0, 0, .75);
+            font-weight: 100;
+        }
+
+        &_cards {
+            // Consider using grid instead
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    }
+}
