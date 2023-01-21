@@ -10,13 +10,20 @@ import About from '../../components/About/About';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FilterBtn from '../../components/FilterBtn/FilterBtn';
 
 
 interface PropType {
-    onSearchSubmit: (input: string) => void;
+    onSearchSubmit: (input: string) => void,
+    onSelect: (id: number) => void
+    filterTypes: {
+        id: number;
+        type: string,
+        selected: boolean,
+    }[]
 }
 
-export const Homepage = ({ onSearchSubmit }: PropType) => {
+export const Homepage = ({ onSearchSubmit, onSelect, filterTypes }: PropType) => {
     const [userInput, setUserInput] = useState("");
     const [displayAbout, setDisplayAbout] = useState(false);
     const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
@@ -46,9 +53,16 @@ export const Homepage = ({ onSearchSubmit }: PropType) => {
 
             <header className={styles.Header}>
                 <h1>[k]een</h1>
-                <label htmlFor="input">Search for authors and book titles</label>
+                <label htmlFor="input">With over 40+ million titles to search from</label>
                 <img src={openBook} alt="open book" />
             </header>
+
+            <div className={styles.Filter}>
+                <h2>Filter by:</h2>
+                {filterTypes.map((filterType) => (
+                    (<FilterBtn onSelect={onSelect} key={filterType.id} filterData={filterType} />)
+                ))}
+            </div>
 
             <form className={styles.Form}>
                 <img src={magGlass} onClick={handleSearchSubmit} />

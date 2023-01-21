@@ -3,21 +3,36 @@ import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 
 interface PropTypes {
   query: string,
-  API_KEY: string
+  API_KEY: string,
+  filterTypes: {
+    id: number;
+    type: string,
+    selected: boolean,
+  }[]
 }
 
 // Change type eventually
 interface ApiData {
-  data: any
+  data: {
+    items: any[]
+  }
 }
 
-const Search = ({ query, API_KEY }: PropTypes) => {
+const Search = ({ query, API_KEY, filterTypes }: PropTypes) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const { data }: ApiData = useGoogleAPIRecall({ query, API_KEY, filterTypes, setIsLoading })
 
-  const { data }: ApiData = useGoogleAPIRecall({ query, API_KEY })
+  console.log(data.items);
 
-  return (
-    <div>Search</div>
-  )
+  if (isLoading) {
+    return (
+      <div>Loading...</div>
+    )
+  } else {
+    return (
+      <div>Search</div>
+    )
+  }
 }
 
 export default Search
