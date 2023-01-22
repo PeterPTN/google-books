@@ -2,25 +2,33 @@ import styles from './FilterBtn.module.scss';
 import React from 'react';
 
 interface PropTypes {
-    onSelect: (id: number) => void,
+    page: string,
+    onFilter: (id: number) => void,
     filterData: {
-        id: number,
-        type: string,
+        id: number;
+        type: string;
+        displayTitle: string;
         selected: boolean;
     }
 }
 
-const FilterBtn = ({ onSelect, filterData }: PropTypes) => {
-    const btnStyles = [styles.Button];
+const FilterBtn = ({ page, onFilter, filterData }: PropTypes) => {
     const id = filterData.id;
-    if (filterData.selected) btnStyles.push(styles.Selected);
+
+    // Is there a better way to do this dynamically?
+    const btnStyles = page === "home"
+        ? [styles.Homebutton]
+        : [styles.Searchbutton];
+
+   if (filterData.selected && page === "home") btnStyles.push(styles.Homeselected)
+   if (filterData.selected && page === "search") btnStyles.push(styles.Searchselected)
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        onSelect(id);
+        onFilter(id);
     }
 
     return (
-        <button onClick={handleClick} className={btnStyles.join(" ")}>{filterData.type}</button>
+        <button onClick={handleClick} className={btnStyles.join(" ")}>{filterData.displayTitle}</button>
     )
 }
 

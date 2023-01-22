@@ -1,46 +1,56 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { findSelectedFilter, findSelectedParam } from '../funcs/util-funcs';
 
 interface PropTypes {
     query: string,
     API_KEY: string,
+    isLoading: boolean,
     setIsLoading: (arg0: boolean) => void,
+    setReload: (arg0: boolean) => void,
+    paramTypes: {
+        id: number,
+        type: string,
+        displayTitle: string,
+        selected: boolean;
+    }[],
     filterTypes: {
         id: number,
+        displayTitle: string,
         type: string,
         selected: boolean;
     }[]
 }
 
-// Add more results
-
-const useGoogleAPIRecall = ({ query, API_KEY, filterTypes, setIsLoading }: PropTypes) => {
+const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes, setIsLoading, setReload }: PropTypes) => {
     // Change type eventually
     const [data, setData] = useState<any>([]);
 
-    const googleBooksData = async (qry: string, key: string, type: string) => {
+    const googleBooksData = async (isLoading: boolean, qry: string, key: string, paramType: string, filterType: string) => {
         const workingQuery = qry || "CSS In Depth";
 
         try {
-            const response = type ?
-                await fetch(`https://www.googleapis.com/books/v1/volumes?q=+${type}:${workingQuery}&key=${key}`) :
-                await fetch(`https://www.googleapis.com/books/v1/volumes?q=${workingQuery}&key=${key}`);
+            let url = "";
+            if (paramType) url = `https://www.googleapis.com/books/v1/volumes?q=+${paramType}:${workingQuery}&key=${key}&maxResults=20`;
+            if (filterType) url = url.concat(`&filter=${filterType}`);
 
+            const response = await fetch(url);
             const responseJson = await response.json();
+
             setData(responseJson.items);
-            setTimeout(() => setIsLoading(false), 1000);
+            setTimeout(() =>setReload(false), 500)
+            
+            if (isLoading) setTimeout(() => setIsLoading(false), 1000);
         } catch (error) {
             console.log(error, "Error message");
         }
     }
 
     useEffect(() => {
-        const type = filterTypes.reduce((filter, filterData) => {
-            if (filterData.selected && filterData.type !== "includes") filter = `in${filterData.type}`;
-            return filter
-        }, "");
+        const paramType = findSelectedParam(paramTypes);
+        const filterType = findSelectedFilter(filterTypes);
 
-        googleBooksData(query, API_KEY, type)
-    }, [query])
+        googleBooksData(isLoading, query, API_KEY, paramType, filterType)
+    }, [query, filterTypes])
 
     return { data };
 }

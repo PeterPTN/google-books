@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
 
-    animation: show .25s linear;
+    animation: show .15s linear;
 
     &__circle {
         width: 300px;
@@ -22,7 +22,7 @@
             border: 8px solid rgb(0, 0, 0, .25);
             border-top: 8px solid $primary;
             border-radius: 50%;
-            animation: rotate 1.25s linear infinite;
+            animation: rotate 1s linear infinite;
         }
 
         p {

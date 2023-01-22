@@ -14,16 +14,17 @@ import Form from '../../components/Form/Form';
 interface PropType {
     onSearchSubmit: (input: string) => void,
     onSelect: (id: number) => void,
-    onUserInput: (e: {target: HTMLInputElement } ) => void,
+    onUserInput: (e: { target: HTMLInputElement }) => void,
     userInput: string,
-    filterTypes: {
+    paramTypes: {
         id: number;
         type: string,
+        displayTitle: string,
         selected: boolean,
     }[]
 }
 
-export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, filterTypes, userInput }: PropType) => {
+export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, paramTypes, userInput }: PropType) => {
     const [displayAbout, setDisplayAbout] = useState(false);
     const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
 
@@ -47,8 +48,8 @@ export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, filterTypes, u
 
             <div className={styles.Filter}>
                 <h2>Filter by:</h2>
-                {filterTypes.map((filterType) => (
-                    (<FilterBtn onSelect={onSelect} key={filterType.id} filterData={filterType} />)
+                {paramTypes.map((filterType) => (
+                    (<FilterBtn page="home" onFilter={onSelect} key={filterType.id} filterData={filterType} />)
                 ))}
             </div>
 

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Search from './containers/Search/Searchpage';
 import { ErrorPage } from './errors/ErrorPage';
-import { SEARCH_FILTERS } from './data/constants';
+import { SEARCH_PARAMS } from './data/constants';
 
 interface ArrayTypes {
   id: number;
@@ -14,22 +14,24 @@ interface ArrayTypes {
 function App() {
   const [userInput, setUserInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [filterTypes, setFilterTypes] = useState(SEARCH_FILTERS);
+  const [paramTypes, setParamTypes] = useState(SEARCH_PARAMS);
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const handleSubmit = (input: string) => {
     setSearchQuery(input)
   }
 
+  // Is it possible to store callback to setParamTypes as utility function?
+  // Code is duplicated in Searchpage.tsx
   const handleSelect = (id: number) => {
-    setFilterTypes(filterTypes.reduce((array: ArrayTypes[], filterType) => {
-      id === filterType.id ? filterType.selected = true : filterType.selected = false;
-      array.push(filterType);
+    setParamTypes(paramTypes.reduce((array: ArrayTypes[], paramType) => {
+      id === paramType.id ? paramType.selected = true : paramType.selected = false;
+      array.push(paramType);
       return array
     }, []));
   }
 
-  const handleUserInput = (e: { target: HTMLInputElement  }) => {
+  const handleUserInput = (e: { target: HTMLInputElement }) => {
     setUserInput(e.target.value);
   }
 
@@ -38,7 +40,7 @@ function App() {
       path: "/",
       element: <Homepage
         onSearchSubmit={handleSubmit}
-        filterTypes={filterTypes}
+        paramTypes={paramTypes}
         onSelect={handleSelect}
         onUserInput={handleUserInput}
         userInput={userInput}
@@ -48,7 +50,7 @@ function App() {
     {
       path: "/search",
       element: <Search
-        filterTypes={filterTypes}
+        paramTypes={paramTypes}
         onSearchSubmit={handleSubmit}
         onUserInput={handleUserInput}
         userInput={userInput}

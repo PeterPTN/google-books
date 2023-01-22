@@ -2,8 +2,14 @@ import styles from './Bookcard.module.scss'
 import notFound from '../../assets/images/notFound.png'
 
 interface PropTypes {
+    onBookClick: (data: any) => void,
+    data: any;
     saleInfo: {
-        title: string
+        buyLink: string;
+        listPrice: {
+            amount: number,
+            currencyCode: string
+        }
     },
     volumeInfo: {
         title: string
@@ -15,21 +21,37 @@ interface PropTypes {
     }
 }
 
-const Bookcards = ({ saleInfo, volumeInfo }: PropTypes) => {
-    console.log("SaleInfo", saleInfo) 
-    console.log("VolumeInfo", volumeInfo)
-
+const Bookcards = ({ onBookClick, data, saleInfo, volumeInfo }: PropTypes) => {
+    
+    //console.log("SaleInfo", saleInfo)
+    //console.log("VolumeInfo", volumeInfo)
+    //console.log(data);
+    
     const imgSrc = volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : notFound;
-    const title = volumeInfo.title;
-    const authors = volumeInfo.authors.join(" ")
+    const title = volumeInfo.title ? volumeInfo.title : "Unknown";
+    const authors = volumeInfo.authors ? volumeInfo.authors.join(" ") : "Unknown";
+    const forSale = saleInfo.listPrice
+    ? `${saleInfo.listPrice.amount} ${saleInfo.listPrice.currencyCode}`
+    : "Not listed";
+    const buyLink = saleInfo.buyLink ? saleInfo.buyLink : "";
+    const priceStyle = buyLink.length > 0 ? [styles.Bookcards__price] : [styles.Noprice];
 
+    const handleClick = () => {
+        onBookClick(data);
+    }
 
     return (
         <div className={styles.Bookcards}>
             <h2 className='multi-truncate'>{title}</h2>
             <h3 className='truncate'>{authors}</h3>
-            <img src={imgSrc} alt={title} />
-        </div>
+            <figure>
+                <img src={imgSrc} alt={title} onClick={handleClick} />
+                <p>Preview</p>
+            </figure>
+
+            <p>{forSale}</p>
+            <a className={priceStyle.join(" ")} href={buyLink} target="_blank" rel="norefferer noopener">Buy link</a>
+        </div >
     )
 }
 

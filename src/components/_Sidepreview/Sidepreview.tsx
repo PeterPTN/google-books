@@ -1,5 +1,6 @@
 import Form from '../Form/Form';
-import styles from './Sidesearch.module.scss';
+import Preview from '../Preview/Preview';
+import styles from './Sidepreview.module.scss';
 
 interface PropTypes {
     onSearchSubmit: (input: string) => void,
@@ -7,13 +8,14 @@ interface PropTypes {
     userInput: string,
 }
 
-const Sidesearch = ({ userInput, onSearchSubmit, onUserInput }: PropTypes) => {
+const Sidepreview = ({ userInput, onSearchSubmit, onUserInput }: PropTypes) => {
 
     return (
         <div>
             <Form page="Side" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
+            <Preview />
         </div>
     )
 }
 
-export default Sidesearch
+export default Sidepreview

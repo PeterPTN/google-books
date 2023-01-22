@@ -1,6 +1,6 @@
 @use '../../styles/global.scss' as *;
 
-.Button {
+.Homebutton {
     font-size: 1rem;
     padding: .25em .5em;
     border-color: transparent;
@@ -16,8 +16,23 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
 }
 
-.Selected {
-    color:rgb(0, 0, 0, .75);
+.Homeselected {
+    color: rgb(0, 0, 0, .75);
     box-shadow: none;
     border-color: $primary;
+}
+
+.Searchbutton {
+    padding: .5em .75em;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: all .15s;
+    filter: drop-shadow(0px 2px .25em rgb(0, 0, 0, .2));
+}
+
+
+.Searchselected {
+    background-color: $primary;
+    color: white;
 }
