@@ -20,8 +20,8 @@ const FilterBtn = ({ page, onFilter, filterData }: PropTypes) => {
         ? [styles.Homebutton]
         : [styles.Searchbutton];
 
-   if (filterData.selected && page === "home") btnStyles.push(styles.Homeselected)
-   if (filterData.selected && page === "search") btnStyles.push(styles.Searchselected)
+    if (filterData.selected && page === "home") btnStyles.push(styles.Homeselected)
+    if (filterData.selected && page === "search") btnStyles.push(styles.Searchselected)
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         onFilter(id);

@@ -35,8 +35,7 @@
 
 /* Multi line truncate */
 .multi-truncate {
-  line-height: 1.5rem;
-  max-height: 3rem;
+  line-height: 1.1em;
   -webkit-box-orient: vertical;
   display: block;
   display: -webkit-box;

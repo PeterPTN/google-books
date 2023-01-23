@@ -64,6 +64,7 @@
 .Sidesearch {
     width: fit-content;
     position: relative;
+    width: 100%;
 
     img {
         top: .4rem;
@@ -72,6 +73,8 @@
 
     input[type='text'] {
         font-size: 1em;
+        width: 100%;
+
     }
 
     input[type='submit'] {

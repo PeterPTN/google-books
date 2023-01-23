@@ -1,5 +1,47 @@
-.Sidesearch {
-    width: 20vw;
+@use '../../styles/global.scss' as *;
+
+.Sidepreview {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
     height: 100vh;
-    background-color: red;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1em 1em 0 1em;
+        row-gap: 1em;
+
+        &_search {
+            display: flex;
+            justify-content: space-between;
+            
+            a:first-letter {
+                color: white;
+                text-shadow:
+                    2px 2px 1px $primary,
+                    0px 0px 0px black;
+            }
+    
+            a {
+                color: $primary;
+                font-size: 2rem;
+                letter-spacing: 2px;
+                font-style: italic;
+                font-weight: 100;
+            }
+    
+            img {
+                object-fit: contain;
+                position: relative;
+                top: .25em;
+            }
+        }
+    
+        &_filter {
+            display: flex;
+            column-gap: .5em;
+        }
+    }
 }

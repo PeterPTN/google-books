@@ -7,7 +7,7 @@ interface PropTypes {
     onBookClick: (data: any) => void,
     onFilterClick: (id: number) => void,
     books: any[],
-    reload: boolean,
+    mainLoad: boolean,
     filterTypes: {
         id: number;
         type: string,
@@ -16,14 +16,14 @@ interface PropTypes {
     }[]
 }
 
-const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, reload }: PropTypes) => {
+const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoad }: PropTypes) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.Wrapper__display}>
                 <h1>Search Results:</h1>
 
                 <div className={style.Wrapper__display_filter}>
-                    <h2>Google Books Filter</h2>
+                    <h2>Google Books Filters</h2>
 
                     <div className={style.Wrapper__display_filter_btns}>
                         {filterTypes.map((filterType) => (
@@ -32,7 +32,7 @@ const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, reload 
                     </div>
                 </div>
 
-                {reload ?
+                {mainLoad ?
                     <Reload />
                     :
                     <div className={style.Wrapper__display_cards}>

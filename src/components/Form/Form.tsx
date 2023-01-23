@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 interface PropTypes {
     onSearchSubmit: (input: string) => void,
     onUserInput: (e: { target: HTMLInputElement }) => void,
+    setMainLoad: (arg0: boolean) => void,
     userInput: string,
     page: string
 }
 
-const Form = ({ page, userInput, onSearchSubmit, onUserInput }: PropTypes) => {
+const Form = ({ page, userInput, onSearchSubmit, onUserInput, setMainLoad }: PropTypes) => {
     const navigate = useNavigate();
     const formStyles = page === "Home"
         ? [styles.Form, styles.Homepage]
@@ -20,6 +21,7 @@ const Form = ({ page, userInput, onSearchSubmit, onUserInput }: PropTypes) => {
         e.preventDefault();
         onSearchSubmit(userInput);
         navigate("/search");
+        if (setMainLoad) setMainLoad(true);
     }
 
     const handleUserInput = (e: { target: HTMLInputElement }) => {

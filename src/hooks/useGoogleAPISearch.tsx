@@ -6,7 +6,7 @@ interface PropTypes {
     API_KEY: string,
     isLoading: boolean,
     setIsLoading: (arg0: boolean) => void,
-    setReload: (arg0: boolean) => void,
+    setMainLoad: (arg0: boolean) => void,
     paramTypes: {
         id: number,
         type: string,
@@ -21,7 +21,7 @@ interface PropTypes {
     }[]
 }
 
-const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes, setIsLoading, setReload }: PropTypes) => {
+const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes, setIsLoading, setMainLoad }: PropTypes) => {
     // Change type eventually
     const [data, setData] = useState<any>([]);
 
@@ -37,8 +37,8 @@ const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes
             const responseJson = await response.json();
 
             setData(responseJson.items);
-            setTimeout(() =>setReload(false), 500)
-            
+            setTimeout(() => setMainLoad(false), 500)
+
             if (isLoading) setTimeout(() => setIsLoading(false), 1000);
         } catch (error) {
             console.log(error, "Error message");

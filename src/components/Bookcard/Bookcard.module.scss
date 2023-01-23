@@ -1,42 +1,63 @@
+@use '../../styles/global.scss' as *;
+
 .Bookcards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
     text-align: center;
-    border: 2px solid red;
-    width: 200px;
-    padding: 1rem;
+    padding: 1em;
+    box-shadow: 3px 3px 1em rgb(0, 0, 0, .05);
+    border-radius: 2rem;
 
     h2 {
-        font-size: 1.1rem;
+        font-size: 1.05em;
+        align-self: stretch;
+        color: rgb(0, 0, 0, .9);
+        text-shadow: 0px 0px 0px rgb(139, 14, 14);
+        margin: .25em 0 .5em;
+        font-weight: normal;
     }
 
     h3 {
+        margin-top: auto;
         font-size: 1rem;
-        margin-bottom: 1rem;
+        color: rgb(0, 0, 0, .8);
+        font-weight: normal;
+        margin-bottom: .5em;
+        padding: 0 2em;
+    }
+
+    p {
+        color: rgb(0, 0, 0, .8);
+        margin-bottom: .25em;
     }
 
     figure {
-        margin-top: auto;
+        margin-bottom: auto;
         position: relative;
 
         img {
-            background-color: rgb(50, 50, 50, .15);
+            border-radius: 1rem;
+            background-color: rgba(170, 170, 170, 0.1);
             height: 200px;
-            width: 150px;
+            width: 100%;
             object-fit: contain;
             cursor: pointer;
-            margin-bottom: 1em;
-            transition: all .15s;
+            transition: all .25s;
             position: relative;
             z-index: 110;
+            border: 2px solid rgb(245, 245, 245);
         }
 
         img:hover {
             opacity: .1;
         }
 
+        img:active {
+            opacity: .5;
+            transform: scale(.985);
+        }
+
         p {
+            font-style: italic;
             position: absolute;
             top: 5em;
             left: 0;
@@ -45,13 +66,15 @@
             margin: 0 auto;
             z-index: 100;
             font-size: 1.05;
-            font-weight: bolder;
+            letter-spacing: 1px;
+            color: rgb(0, 0, 0, .9);
         }
     }
 
+
     &__price {
         cursor: pointer;
-        color: rgb(0, 0, 0, .85);
+        color: $primary;
 
         &:hover {
             text-decoration: underline;
@@ -63,5 +86,5 @@
     color: rgb(0, 0, 0, .2);
     cursor: default;
     pointer-events: none;
-    
+
 }

@@ -8,6 +8,7 @@ import { SEARCH_PARAMS } from './data/constants';
 interface ArrayTypes {
   id: number;
   type: string;
+  displayTitle: string,
   selected: boolean;
 }
 
@@ -23,7 +24,7 @@ function App() {
 
   // Is it possible to store callback to setParamTypes as utility function?
   // Code is duplicated in Searchpage.tsx
-  const handleSelect = (id: number) => {
+  const handleSearchSelect = (id: number) => {
     setParamTypes(paramTypes.reduce((array: ArrayTypes[], paramType) => {
       id === paramType.id ? paramType.selected = true : paramType.selected = false;
       array.push(paramType);
@@ -41,7 +42,7 @@ function App() {
       element: <Homepage
         onSearchSubmit={handleSubmit}
         paramTypes={paramTypes}
-        onSelect={handleSelect}
+        onSelect={handleSearchSelect}
         onUserInput={handleUserInput}
         userInput={userInput}
       />,
@@ -52,6 +53,7 @@ function App() {
       element: <Search
         paramTypes={paramTypes}
         onSearchSubmit={handleSubmit}
+        onSearchSelect={handleSearchSelect}
         onUserInput={handleUserInput}
         userInput={userInput}
         query={searchQuery}

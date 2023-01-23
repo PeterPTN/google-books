@@ -4,19 +4,19 @@ const SEARCH_PARAMS = [
     {
         id: ++counter,
         type: "includes",
-        displayTitle: "includes",
+        displayTitle: "Includes",
         selected: false,
     },
     {
         id: ++counter,
         type: "author",
-        displayTitle: "author",
+        displayTitle: "Author",
         selected: false
     },
     {
         id: ++counter,
         type: "title",
-        displayTitle: "title",
+        displayTitle: "Title",
         selected: true
     }
 ]

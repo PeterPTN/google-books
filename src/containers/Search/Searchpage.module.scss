@@ -1,8 +1,10 @@
+@use '../../styles/global.scss' as *;
+
 .Search {
     height: 100vh;
     width: 100%;
     display: flex;
-
+    background-color: $accent;
     animation: load .15s linear;
 }
 
