@@ -12,7 +12,7 @@ const About = ({ canDisplay }: PropTypes) => {
     return (
         <div className={aboutStyles.join(" ")}>
             <p>This is a SPA fetching data from Google Book's API.
-                Made with React, TSX and SASS.</p>
+                Made with Vite/React+Typescript and SASS.</p>
             <a href="https://github.com/PeterPTN/google-books" target="_blank" rel="noopener norefferer">Github Repo</a>
             <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener norefferer">Creator</a>
         </div>
