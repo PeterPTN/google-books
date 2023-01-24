@@ -1,4 +1,4 @@
-import BookCard from '../../components/BookCard/BookCard';
+import BookCard from '../../components/BookCard/Bookcard';
 import style from './DisplaySearch.module.scss';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import Reload from '../../components/Reload/Reload';
