@@ -16,7 +16,7 @@ interface PropTypes {
     }[]
 };
 
-const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoad }: PropTypes) => {
+const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoad }: PropTypes) => {
     return (
         <div className={style.Wrapper}>
             <div className={style.Wrapper__display}>
@@ -53,4 +53,4 @@ const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoa
     )
 }
 
-export default Displaysearch
+export default DisplaySearch

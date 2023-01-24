@@ -3,7 +3,7 @@ import Loader from "../../containers/Loader/Loader";
 import Sidepreview from "../../containers/SideDisplay/SideDisplay";
 import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 import styles from './SearchPage.module.scss';
-import Displaysearch from "../../containers/DisplaySearch/Displaysearch";
+import DisplaySearch from "../../containers/DisplaySearch/Displaysearch";
 import { FILTER_TYPE } from "../../data/constants";
 import ErrorComponent from "../../errors/SearchError/SearchError";
 
@@ -80,7 +80,7 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
       {error ?
         <ErrorComponent />
         :
-        <Displaysearch
+        <DisplaySearch
           mainLoad={mainLoad}
           books={data}
           filterTypes={filterTypes}
