@@ -29,15 +29,15 @@ const BookCard = ({ onBookClick, data, saleInfo, volumeInfo }: PropTypes) => {
     const forSale = saleInfo.listPrice ? `$${saleInfo.listPrice.amount} ${saleInfo.listPrice.currencyCode}` : "";
     const isFree = saleInfo.saleability.replaceAll("_", " ").toLowerCase();
     const buyLink = saleInfo.buyLink ? saleInfo.buyLink : "";
-    const priceStyle = buyLink.length > 0 ? [styles.Bookcards__price] : [styles.Noprice];
+    const priceStyle = buyLink.length > 0 ? [styles.BookCards__price] : [styles.Noprice];
 
     const handleClick = () => {
         onBookClick(data);
     }
 
     return (
-        <div className={styles.Bookcards}>
-             <figure>
+        <div className={styles.BookCard}>
+            <figure>
                 <img src={imgSrc} alt={title} onClick={handleClick} />
                 <p>Preview</p>
             </figure>
