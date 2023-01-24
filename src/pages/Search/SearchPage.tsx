@@ -1,11 +1,11 @@
 import { useState } from "react"
-import Loader from "../../components/__Loader/Loader";
-import Sidepreview from "../../components/_Sidepreview/Sidepreview";
+import Loader from "../../containers/Loader/Loader";
+import Sidepreview from "../../containers/SideDisplay/SideDisplay";
 import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
-import styles from './Searchpage.module.scss';
-import Displaysearch from "../../components/_Displaysearch/Displaysearch";
+import styles from './SearchPage.module.scss';
+import Displaysearch from "../../containers/DisplaySearch/Displaysearch";
 import { FILTER_TYPE } from "../../data/constants";
-import ErrorComponent from "../../errors/ErrorComponent/ErrorComponent";
+import ErrorComponent from "../../errors/SearchError/SearchError";
 
 interface PropTypes {
   onSearchSelect: (id: number) => void,

@@ -1,7 +1,7 @@
-import { Homepage } from './containers/Homepage/Homepage';
+import { Homepage } from './pages/Homepage/HomePage';
 import { useState } from 'react';
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
-import Search from './containers/Search/Searchpage';
+import Search from './pages/Search/SearchPage';
 import { ErrorPage } from './errors/ErrorPage';
 import { SEARCH_PARAMS } from './data/constants';
 

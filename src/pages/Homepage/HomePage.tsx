@@ -1,4 +1,4 @@
-import styles from './Homepage.module.scss';
+import styles from './HomePage.module.scss';
 
 import Rectangle from '../../assets/Rectangles/Rectangle';
 import recStyles from '../../assets/Rectangles/Rectangles.module.scss';

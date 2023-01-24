@@ -1,7 +1,7 @@
-import Form from '../Form/Form';
-import Preview from '../Preview/Preview';
-import styles from './Sidepreview.module.scss';
-import FilterBtn from '../FilterBtn/FilterBtn';
+import Form from '../../components/Form/Form';
+import Preview from '../../components/Preview/Preview';
+import styles from './SideDisplay.module.scss';
+import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import Google from '../../assets/images/Google.png'
 import { Link } from 'react-router-dom';
 

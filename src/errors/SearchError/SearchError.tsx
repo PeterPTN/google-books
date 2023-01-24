@@ -1,4 +1,4 @@
-import style from './ErrorComponent.module.scss';
+import style from './SearchError.module.scss';
 
 const ErrorComponent = () => {
   return (

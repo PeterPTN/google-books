@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 interface PropTypes {
     onSearchSubmit: (input: string) => void,
     onUserInput: (e: { target: HTMLInputElement }) => void,
-    setMainLoad: (arg0: boolean) => void,
+    setMainLoad?: (arg0: boolean) => void,
     userInput: string,
     page: string
 }

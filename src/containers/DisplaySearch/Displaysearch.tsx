@@ -1,7 +1,7 @@
-import Bookcard from '../Bookcard/Bookcard';
-import style from './Displaysearch.module.scss';
-import FilterBtn from '../FilterBtn/FilterBtn';
-import Reload from '../Reload/Reload';
+import Bookcard from '../../components/BookCard/Bookcard';
+import style from './DisplaySearch.module.scss';
+import FilterBtn from '../../components/FilterBtn/FilterBtn';
+import Reload from '../../components/Reload/Reload';
 
 interface PropTypes {
     onBookClick: (data: any) => void,
