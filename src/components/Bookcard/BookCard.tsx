@@ -50,4 +50,4 @@ const BookCard = ({ onBookClick, data, saleInfo, volumeInfo }: PropTypes) => {
     )
 }
 
-export default BookCard
+export { BookCard }
