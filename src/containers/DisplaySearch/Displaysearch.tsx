@@ -47,7 +47,6 @@ const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoa
                         })}
                     </div>
                 }
-
             </div>
         </div>
     )
