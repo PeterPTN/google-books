@@ -5,6 +5,7 @@ import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 import styles from './Searchpage.module.scss';
 import Displaysearch from "../../components/_Displaysearch/Displaysearch";
 import { FILTER_TYPE } from "../../data/constants";
+import ErrorComponent from "../../errors/ErrorComponent/ErrorComponent";
 
 interface PropTypes {
   onSearchSelect: (id: number) => void,
@@ -24,7 +25,8 @@ interface PropTypes {
 // Change type eventually
 // Not sure what to
 interface ApiData {
-  data: any[]
+  data: any[],
+  error: boolean
 }
 
 interface ArrayTypes {
@@ -41,7 +43,7 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
 
   const [filterTypes, setFilterTypes] = useState(FILTER_TYPE);
   const [extraBookData, setExtraBookData] = useState({ id: "initial" });
-  const { data }: ApiData = useGoogleAPIRecall({ query, API_KEY, paramTypes, filterTypes, isLoading, setIsLoading, setMainLoad });
+  const { data, error }: ApiData = useGoogleAPIRecall({ query, API_KEY, paramTypes, filterTypes, isLoading, setIsLoading, setMainLoad });
 
   const handleFilterClick = (id: number) => {
     setFilterTypes(filterTypes.reduce((array: ArrayTypes[], filterType) => {
@@ -75,13 +77,17 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
         setSideLoad={setSideLoad}
       />
 
-      <Displaysearch
-        mainLoad={mainLoad}
-        books={data}
-        filterTypes={filterTypes}
-        onFilterClick={handleFilterClick}
-        onBookClick={handleBookClick}
-      />
+      {error ?
+        <ErrorComponent />
+        :
+        <Displaysearch
+          mainLoad={mainLoad}
+          books={data}
+          filterTypes={filterTypes}
+          onFilterClick={handleFilterClick}
+          onBookClick={handleBookClick}
+        />
+      }
     </div>
   )
 }

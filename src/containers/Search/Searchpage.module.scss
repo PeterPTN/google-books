@@ -6,6 +6,21 @@
     display: flex;
     background-color: $accent;
     animation: load .15s linear;
+
+    @media screen and (max-width: 1050px) {
+        flex-direction: column;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 1em;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: $secondary;
+            border-radius: 2em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.025);
+        }
+    }
 }
 
 @keyframes load {

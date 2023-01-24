@@ -10,12 +10,14 @@ interface PropTypes {
 const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
   let loader = "";
 
-  console.log(previewData);
 
   const title = previewData.volumeInfo.title || "No title";
   const description = previewData.volumeInfo.description || previewData.volumeInfo.subtitle;
   const link = previewData.volumeInfo.infoLink;
-  const src = previewData.volumeInfo.imageLinks.smallThumbnail || NotFound;
+  const src =
+    previewData.volumeInfo.imageLinks.smallThumbnail
+    || previewData.volumeInfo.imageLinks.thumbnail
+    || NotFound;
   const authors = previewData.volumeInfo.authors.join(", ");
 
   if (sideLoad) {
@@ -26,19 +28,16 @@ const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
     loader = "";
   }
 
-  // Separate paragraphs by lines of 4
-
-
   return (
     <div className={styles.Preview}>
       <header className={loader}>
+        <img src={src} />
+
         <div>
           <h2>{title}</h2>
           <p>{authors}</p>
           <a href={link} target='_blank' rel="noopener noreferrer" >Find out more</a>
         </div>
-
-        <img src={src} />
       </header>
 
       <main className={loader}>

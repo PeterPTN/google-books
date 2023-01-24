@@ -1,15 +1,16 @@
 @use '../../styles/global.scss' as *;
 
 .Container {
-    height: 100%;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 1;
     animation: fade .25s;
+    position: relative;
+    bottom: 5em;
 
     &__spinner {
-        margin-bottom: 10em;
         width: 100px;
         aspect-ratio: 1/1;
         border: 8px solid yellow;

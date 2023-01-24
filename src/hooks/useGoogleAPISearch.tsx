@@ -24,6 +24,7 @@ interface PropTypes {
 const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes, setIsLoading, setMainLoad }: PropTypes) => {
     // Change type eventually
     const [data, setData] = useState<any>([]);
+    const [error, setError] = useState(false);
 
     const googleBooksData = async (isLoading: boolean, qry: string, key: string, paramType: string, filterType: string) => {
         const workingQuery = qry || "CSS In Depth";
@@ -34,14 +35,16 @@ const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes
             if (filterType) url = url.concat(`&filter=${filterType}`);
 
             const response = await fetch(url);
+            if (!response.ok) throw new Error("Could not fetch data")
             const responseJson = await response.json();
 
             setData(responseJson.items);
-            setTimeout(() => setMainLoad(false), 500)
-
-            if (isLoading) setTimeout(() => setIsLoading(false), 1000);
         } catch (error) {
-            console.log(error, "Error message");
+            // console.log(error, "Error message");
+            setError(true);
+        } finally {
+            setTimeout(() => setMainLoad(false), 500)
+            if (isLoading) setTimeout(() => setIsLoading(false), 1000);
         }
     }
 
@@ -52,7 +55,7 @@ const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes
         googleBooksData(isLoading, query, API_KEY, paramType, filterType)
     }, [query, filterTypes])
 
-    return { data };
+    return { data, error };
 }
 
 export { useGoogleAPIRecall }
