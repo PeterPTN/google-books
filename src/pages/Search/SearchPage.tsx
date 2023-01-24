@@ -23,7 +23,6 @@ interface PropTypes {
 }
 
 // Change type eventually
-// Not sure what to
 interface ApiData {
   data: any[],
   error: boolean
