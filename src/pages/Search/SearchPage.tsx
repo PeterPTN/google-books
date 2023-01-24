@@ -3,7 +3,7 @@ import Loader from "../../containers/Loader/Loader";
 import Sidepreview from "../../containers/SideDisplay/SideDisplay";
 import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 import styles from './SearchPage.module.scss';
-import DisplaySearch from "../../containers/DisplaySearch/Displaysearch";
+import DisplaySearch from "../../containers/DisplaySearch/DisplaySearch";
 import { FILTER_TYPE } from "../../data/constants";
 import ErrorComponent from "../../errors/SearchError/SearchError";
 
