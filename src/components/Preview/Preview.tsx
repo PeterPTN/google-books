@@ -19,9 +19,6 @@ const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
     ? previewData.volumeInfo.authors.join(", ")
     : "Not applicable";
 
-
-  console.log(delimitedDescription);
-
   if (sideLoad) {
     loader = styles.Load
     // Match animation speed

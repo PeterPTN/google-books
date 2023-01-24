@@ -6,30 +6,31 @@
     padding: 1em;
     box-shadow: 2px 3px 1em rgb(0, 0, 0, .05);
     border-radius: 2rem;
+    justify-content: center;
 
     h2 {
-        font-size: 1.05em;
+        font-size: 1.08em;
         align-self: stretch;
-        color: rgb(0, 0, 0, .9);
-        text-shadow: 0px 0px 0px rgb(139, 14, 14);
-        margin: .25em 0 .5em;
         font-weight: normal;
-    }
-
-    h3 {
+        text-shadow: 0px 0px 0px rgb(0, 0, 0);
+        color: rgb(0, 0, 0, .9);
         margin-top: auto;
+        margin-bottom: .5em;
+    }
+    
+    h3 {
+        border-top: 1px solid rgba(236, 236, 232, 0.24);
         font-size: 1rem;
         color: rgb(0, 0, 0, .8);
         font-weight: normal;
-        margin-bottom: .5em;
-        padding: 0 2em;
-        margin-top: auto;
+        padding: .5em 2em .5em;
     }
 
     p {
-        color: rgb(0, 0, 0, .8);
+        color: rgb(0, 0, 0, .7);
         margin-bottom: .5em;
         margin-top: auto;
+        text-transform: capitalize;
     }
 
     a {
