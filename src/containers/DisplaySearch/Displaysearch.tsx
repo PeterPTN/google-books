@@ -14,7 +14,7 @@ interface PropTypes {
         displayTitle: string,
         selected: boolean,
     }[]
-}
+};
 
 const Displaysearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoad }: PropTypes) => {
     return (

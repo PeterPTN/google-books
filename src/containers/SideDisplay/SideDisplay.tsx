@@ -24,15 +24,15 @@ interface PropTypes {
 
 const Sidepreview = ({ setMainLoad, previewData, userInput, paramTypes, onSearchSubmit, onSearchSelect, onUserInput, sideLoad, setSideLoad }: PropTypes) => {
     return (
-        <div className={styles.Sidepreview}>
-            <div className={styles.Sidepreview__header}>
-                <div className={styles.Sidepreview__header_search}>
+        <div className={styles.SideDisplay}>
+            <div className={styles.SideDisplay__header}>
+                <div className={styles.SideDisplay__header_search}>
                     <Link to="/">[K]een</Link>
                     <img src={Google} />
                 </div>
 
                 <Form setMainLoad={setMainLoad} page="Side" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
-                <div className={styles.Sidepreview__header_filter}>
+                <div className={styles.SideDisplay__header_filter}>
                     {
                         paramTypes.map((filterType) => (
                             (<FilterBtn page="search" onFilter={onSearchSelect} key={filterType.id} filterData={filterType} />)

@@ -22,6 +22,7 @@
     @media screen and (max-width: 1050px) {
         flex: none;
         border-right: 1rem solid $accent;
+        border-radius: 3em;
     }
 
     &__display {

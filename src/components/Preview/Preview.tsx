@@ -1,5 +1,6 @@
 import styles from './Preview.module.scss';
 import NotFound from '../../assets/images/notFound.png'
+import { splitString } from '../../services/util-funcs';
 
 interface PropTypes {
   previewData: any,
@@ -9,16 +10,17 @@ interface PropTypes {
 
 const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
   let loader = "";
-
-
   const title = previewData.volumeInfo.title || "No title";
-  const description = previewData.volumeInfo.description || previewData.volumeInfo.subtitle;
+  const fullDescription = previewData.volumeInfo.description || previewData.volumeInfo.subtitle;
+  const delimitedDescription = fullDescription !== undefined ? splitString(fullDescription) : ["No description"];
   const link = previewData.volumeInfo.infoLink;
-  const src =
-    previewData.volumeInfo.imageLinks.smallThumbnail
-    || previewData.volumeInfo.imageLinks.thumbnail
-    || NotFound;
-  const authors = previewData.volumeInfo.authors.join(", ");
+  const src = previewData.volumeInfo.imageLinks ? previewData.volumeInfo.imageLinks.smallThumbnail : NotFound;
+  const authors = previewData.volumeInfo.authors> 0
+    ? previewData.volumeInfo.authors.join(", ")
+    : "Not applicable";
+
+
+  console.log(delimitedDescription);
 
   if (sideLoad) {
     loader = styles.Load
@@ -42,7 +44,9 @@ const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
 
       <main className={loader}>
         <h3>Description</h3>
-        <p>{description}</p>
+        {delimitedDescription.map((paragraph: string) => (
+          <p>{paragraph}</p>
+        ))}
       </main>
     </div>
   )

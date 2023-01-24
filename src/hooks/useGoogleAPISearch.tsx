@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { findSelectedFilter, findSelectedParam } from '../funcs/util-funcs';
+import { findSelectedFilter, findSelectedParam } from '../services/util-funcs';
 
 interface PropTypes {
     query: string,
@@ -38,7 +38,10 @@ const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes
             if (!response.ok) throw new Error("Could not fetch data")
             const responseJson = await response.json();
 
-            setData(responseJson.items);
+            if (responseJson.totalItems > 0) {
+                setError(false);
+                setData(responseJson.items);
+            } else setError(true);
         } catch (error) {
             // console.log(error, "Error message");
             setError(true);

@@ -1,12 +1,8 @@
 import styles from './HomePage.module.scss';
-
 import Rectangle from '../../assets/Rectangles/Rectangle';
 import recStyles from '../../assets/Rectangles/Rectangles.module.scss';
-
 import openBook from '../../assets/images/openBook.svg';
-
 import About from '../../components/About/About';
-
 import { useState } from 'react';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import Form from '../../components/Form/Form';
@@ -34,7 +30,6 @@ export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, paramTypes, us
 
     return (
         <main className={styles.Container}>
-
             <div className={styles.About}>
                 <button onClick={handleAboutClick} className={AboutBtnStyles}>about</button>
                 <About canDisplay={displayAbout} />
@@ -54,6 +49,8 @@ export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, paramTypes, us
             </div>
 
             <Form page="Home" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
+
+            <h3>&copy; 2023 <a rel="noopener noreferrer" href="https://pptn-web-dev.netlify.app/">Peter Nguyen</a></h3>
 
             <Rectangle type={`${recStyles.RectangleOne} `} />
             <Rectangle type={`${recStyles.RectangleTwo} `} />

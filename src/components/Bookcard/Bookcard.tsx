@@ -23,10 +23,6 @@ interface PropTypes {
 }
 
 const Bookcards = ({ onBookClick, data, saleInfo, volumeInfo }: PropTypes) => {
-    //console.log("SaleInfo", saleInfo)
-    //console.log("VolumeInfo", volumeInfo)
-    //console.log(data);
-    
     const imgSrc = volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : notFound;
     const title = volumeInfo.title ? volumeInfo.title : "Unknown";
     const authors = volumeInfo.authors ? volumeInfo.authors[0] : "Unknown";

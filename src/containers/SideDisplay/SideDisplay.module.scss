@@ -1,10 +1,14 @@
 @use '../../styles/global.scss' as *;
 
-.Sidepreview {
+.SideDisplay {
     display: flex;
     flex-direction: column;
     row-gap: 1em;
     height: 100vh;
+
+    @media screen and (max-width: 1050px) {
+        height: auto;
+    }
 
     &__header {
         display: flex;

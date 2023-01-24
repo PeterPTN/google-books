@@ -22,8 +22,6 @@ function App() {
     setSearchQuery(input)
   }
 
-  // Is it possible to store callback to setParamTypes as utility function?
-  // Code is duplicated in Searchpage.tsx
   const handleSearchSelect = (id: number) => {
     setParamTypes(paramTypes.reduce((array: ArrayTypes[], paramType) => {
       id === paramType.id ? paramType.selected = true : paramType.selected = false;
@@ -63,7 +61,7 @@ function App() {
 
   return (
     <>
-      {/* RouteProvider will Morph into objects above */}
+      {/* RouteProvider will push to paths specified */}
       <RouterProvider router={router} />
     </>
   )

@@ -1,3 +1,5 @@
+@use '../styles/global.scss' as *;
+
 .Error {
     display: flex;
     flex-direction: column;
@@ -9,7 +11,7 @@
 // Revise styling when overall design is decided
 .Button {
     padding: .5em 1em;
-    background-color: rgb(196, 71, 71);
+    background-color: $secondary;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.651);
     color: white;
 }
