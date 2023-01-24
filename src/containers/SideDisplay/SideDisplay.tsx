@@ -2,7 +2,7 @@ import Form from '../../components/Form/Form';
 import Preview from '../../components/Preview/Preview';
 import styles from './SideDisplay.module.scss';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
-import Google from '../../assets/images/Google.png'
+import Google from '../../assets/images/google.png'
 import { Link } from 'react-router-dom';
 
 interface PropTypes {
