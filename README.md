@@ -1,4 +1,4 @@
-# Keen
+# Google Books Project - Keen
 
 A SPA made with Vite/React+Typescript. Pulls data from GoogleBooks API. Styling with SASS.
 
