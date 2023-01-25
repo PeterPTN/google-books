@@ -25,8 +25,7 @@ const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick }: PropT
             <div className={style.Wrapper__display}>
                 <div className={style.Wrapper__display_header}>
                     <div className={style.Wrapper__display_header_filter}>
-                        <h1>Search Filters:</h1>
-
+                        <h2>Google Books Filters</h2>
                         <div className={style.Wrapper__display_header_filter_btns}>
                             {filterTypes.map((filterType) => (
                                 (<FilterBtn page="search" onFilter={onFilterClick} key={filterType.id} filterData={filterType} />)

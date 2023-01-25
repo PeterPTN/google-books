@@ -4,25 +4,22 @@
     flex: 1;
     display: flex;
     overflow-y: auto;
-    border-radius: 2em;
 
     &::-webkit-scrollbar {
         width: 1em;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: $secondary;
-        border-radius: 2em;
+        background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.025);
     }
 
     @media screen and (max-width: 1050px) {
         flex: none;
-        border-right: 1rem solid $accent;
-        border-radius: 3em;
     }
 
     &__display {
+        border-top-left-radius: 2em;
         background-color: white;
         min-height: 100%;
         width: 100%;
@@ -31,41 +28,47 @@
         flex-direction: column;
         row-gap: .5em;
 
+
         @media screen and (max-width: 1050px) {
+            border-top-right-radius: 2em;
             overflow-y: auto;
             margin-left: 1em;
         }
 
         &_header {
             position: sticky;
-            padding: 1em 2em 0em;
+            padding: 1em 1.75em .5em;
             top: 0em;
             z-index: 200;
             display: flex;
             transition: all .25s;
-            background-color: white;
+            background-color: $secondary;
+            border-top-left-radius: 2em;
 
             @media screen and (max-width: 1050px) {
+                border-top-right-radius: 2em;
                 justify-content: center;
+                background-color: white;
             }
 
             &_filter {
                 display: flex;
-                column-gap: .5em;
+                flex-direction: column;
+                row-gap: .75em;
 
                 @media screen and (max-width: 1050px) {
-                    flex-direction: column;
-                    align-items: center;
                     justify-content: center;
                     text-align: center;
-                    row-gap: .5em;
                 }
 
-                h1 {
-                    text-align: center;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    color: rgb(0, 0, 0, .775);
+                h2 {
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    color: white;
+
+                    @media screen and (max-width: 1050px) {
+                        color: rgba(0, 0, 0, 0.85);
+                    }
                 }
 
                 &_btns {
@@ -75,6 +78,7 @@
 
                     @media screen and (max-width: 650px) {
                         flex-wrap: wrap;
+                        row-gap: .75em;
                     }
                 }
             }
@@ -86,7 +90,7 @@
             row-gap: 1em;
             column-gap: 2em;
             animation: fade .15s;
-            padding: 0 1.5em;
+            padding: 1em 1.5em 0;
 
             @media screen and (max-width: 1650px) {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
