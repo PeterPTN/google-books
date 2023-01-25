@@ -86,7 +86,7 @@
             row-gap: 1em;
             column-gap: 2em;
             animation: fade .15s;
-            padding: 0 1em;
+            padding: 0 1.5em;
 
             @media screen and (max-width: 1650px) {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
