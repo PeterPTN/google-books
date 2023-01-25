@@ -15,7 +15,7 @@ const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
   const delimitedDescription = fullDescription !== undefined ? splitString(fullDescription) : ["No description"];
   const link = previewData.volumeInfo.infoLink;
   const src = previewData.volumeInfo.imageLinks ? previewData.volumeInfo.imageLinks.smallThumbnail : NotFound;
-  const authors = previewData.volumeInfo.authors> 0
+  const authors = previewData.volumeInfo.authors.length > 0
     ? previewData.volumeInfo.authors.join(", ")
     : "Not applicable";
 
@@ -41,8 +41,8 @@ const Preview = ({ previewData, sideLoad, setSideLoad }: PropTypes) => {
 
       <main className={loader}>
         <h3>Description</h3>
-        {delimitedDescription.map((paragraph: string) => (
-          <p>{paragraph}</p>
+        {delimitedDescription.map((paragraph: string, index) => (
+          <p key={index}>{paragraph}</p>
         ))}
       </main>
     </div>

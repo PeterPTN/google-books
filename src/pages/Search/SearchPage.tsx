@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import Loader from "../../containers/Loader/Loader";
-import Sidepreview from "../../containers/SideDisplay/SideDisplay";
+import SideDisplay from "../../containers/SideDisplay/SideDisplay";
 import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 import styles from './SearchPage.module.scss';
 import DisplaySearch from "../../containers/DisplaySearch/DisplaySearch";
 import { FILTER_TYPE } from "../../data/constants";
 import ErrorComponent from "../../errors/SearchError/SearchError";
+import { MainLoadContext } from "../../context/MainLoadProvider";
 
 interface PropTypes {
   onSearchSelect: (id: number) => void,
@@ -36,8 +37,9 @@ interface ArrayTypes {
 }
 
 const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, userInput, onUserInput }: PropTypes) => {
+  const { setMainLoad } = useContext(MainLoadContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [mainLoad, setMainLoad] = useState(true);
+  //const [mainLoad, setMainLoad] = useState(true);
   const [sideLoad, setSideLoad] = useState(false);
 
   const [filterTypes, setFilterTypes] = useState(FILTER_TYPE);
@@ -45,10 +47,10 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
   const { data, error }: ApiData = useGoogleAPIRecall({ query, API_KEY, paramTypes, filterTypes, isLoading, setIsLoading, setMainLoad });
 
   const handleFilterClick = (id: number) => {
+    setMainLoad(true);
     setFilterTypes(filterTypes.reduce((array: ArrayTypes[], filterType) => {
       id === filterType.id ? filterType.selected = true : filterType.selected = false;
       array.push(filterType);
-      setMainLoad(true);
       return array
     }, []))
   }
@@ -64,7 +66,7 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
   if (isLoading) return <Loader />
   else return (
     <div className={styles.Search}>
-      <Sidepreview
+      <SideDisplay
         setMainLoad={setMainLoad}
         paramTypes={paramTypes}
         onSearchSelect={onSearchSelect}
@@ -80,7 +82,6 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
         <ErrorComponent />
         :
         <DisplaySearch
-          mainLoad={mainLoad}
           books={data}
           filterTypes={filterTypes}
           onFilterClick={handleFilterClick}

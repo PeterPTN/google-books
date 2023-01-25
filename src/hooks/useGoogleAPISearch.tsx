@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { findSelectedFilter, findSelectedParam } from '../services/util-funcs';
+import { findSelectedFilter, findSelectedParam, getLatency } from '../services/util-funcs';
 
 interface PropTypes {
     query: string,
@@ -30,33 +30,38 @@ const useGoogleAPIRecall = ({ isLoading, query, API_KEY, paramTypes, filterTypes
         const workingQuery = qry || "CSS In Depth";
 
         try {
-            let url = "";
-            if (paramType) url = `https://www.googleapis.com/books/v1/volumes?q=+${paramType}:${workingQuery}&key=${key}&maxResults=20`;
+            let url = `https://www.googleapis.com/books/v1/volumes?q=+${paramType}:${workingQuery}&key=${key}&maxResults=20`;
             if (filterType) url = url.concat(`&filter=${filterType}`);
 
             const response = await fetch(url);
             if (!response.ok) throw new Error("Could not fetch data")
             const responseJson = await response.json();
-
-            if (responseJson.totalItems > 0) {
-                setError(false);
+            const totalItems = responseJson.totalItems;
+            const latency = getLatency(totalItems);
+            
+            if (totalItems > 0) {
                 setData(responseJson.items);
-            } else setError(true);
+                setTimeout(() => setMainLoad(false), latency)
+            }
+            else {
+                setTimeout(() => setMainLoad(false), latency)
+                setTimeout(() => setError(true), latency)
+            }
         } catch (error) {
             // console.log(error, "Error message");
             setError(true);
         } finally {
-            setTimeout(() => setMainLoad(false), 500)
             if (isLoading) setTimeout(() => setIsLoading(false), 1000);
         }
     }
 
     useEffect(() => {
+        if (error) setError(false);
         const paramType = findSelectedParam(paramTypes);
         const filterType = findSelectedFilter(filterTypes);
 
         googleBooksData(isLoading, query, API_KEY, paramType, filterType)
-    }, [query, filterTypes])
+    }, [query, filterTypes, paramTypes])
 
     return { data, error };
 }

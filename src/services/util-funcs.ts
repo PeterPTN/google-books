@@ -46,8 +46,13 @@ const splitString = (text: string) => {
         else nextIncrement = periodIndex + 300;
     }
 
-
     return arrayOfParagraphs;
 }
 
-export { findSelectedParam, findSelectedFilter, splitString }
+const getLatency = (totalItems: number) => {
+    if (totalItems === 0) return Math.floor(Math.random() * 500 + 500);
+    else if (totalItems > 1000) return totalItems/2;
+    return totalItems;
+}
+
+export { findSelectedParam, findSelectedFilter, splitString, getLatency }

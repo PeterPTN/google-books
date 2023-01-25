@@ -22,7 +22,7 @@ interface PropTypes {
     }[]
 }
 
-const Sidepreview = ({ setMainLoad, previewData, userInput, paramTypes, onSearchSubmit, onSearchSelect, onUserInput, sideLoad, setSideLoad }: PropTypes) => {
+const SideDisplay = ({ setMainLoad, previewData, userInput, paramTypes, onSearchSubmit, onSearchSelect, onUserInput, sideLoad, setSideLoad }: PropTypes) => {
     return (
         <div className={styles.SideDisplay}>
             <div className={styles.SideDisplay__header}>
@@ -41,11 +41,19 @@ const Sidepreview = ({ setMainLoad, previewData, userInput, paramTypes, onSearch
                 </div>
             </div>
             {
-                previewData.id !== "initial" &&
-                <Preview sideLoad={sideLoad} setSideLoad={setSideLoad} previewData={previewData} />
+                previewData.id !== "initial"
+                    ?
+                    <Preview sideLoad={sideLoad} setSideLoad={setSideLoad} previewData={previewData} />
+                    :
+                    <>
+                        <div className={styles.SideDisplay__pending}>
+                            <div />
+                            <div />
+                        </div>
+                    </>
             }
         </div>
     )
 }
 
-export default Sidepreview
+export default SideDisplay

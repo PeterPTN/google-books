@@ -2,12 +2,13 @@ import { BookCard } from '../../components/BookCard/BookCard';
 import style from './DisplaySearch.module.scss';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import Reload from '../../components/Reload/Reload';
+import { MainLoadContext } from '../../context/MainLoadProvider';
+import { useContext } from 'react';
 
 interface PropTypes {
     onBookClick: (data: any) => void,
     onFilterClick: (id: number) => void,
     books: any[],
-    mainLoad: boolean,
     filterTypes: {
         id: number;
         type: string,
@@ -16,20 +17,24 @@ interface PropTypes {
     }[]
 };
 
-const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick, mainLoad }: PropTypes) => {
+const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick }: PropTypes) => {
+    const { mainLoad, setMainLoad } = useContext(MainLoadContext);
+
     return (
         <div className={style.Wrapper}>
             <div className={style.Wrapper__display}>
-                <h1>Search Results:</h1>
+                <div className={style.Wrapper__display_header}>
+                    <div className={style.Wrapper__display_header_filter}>
+                        <h1>Search Filters:</h1>
 
-                <div className={style.Wrapper__display_filter}>
-                    <h2>Google Books Filters</h2>
+                        <div className={style.Wrapper__display_header_filter_btns}>
+                            {filterTypes.map((filterType) => (
+                                (<FilterBtn page="search" onFilter={onFilterClick} key={filterType.id} filterData={filterType} />)
+                            ))}
+                        </div>
 
-                    <div className={style.Wrapper__display_filter_btns}>
-                        {filterTypes.map((filterType) => (
-                            (<FilterBtn page="search" onFilter={onFilterClick} key={filterType.id} filterData={filterType} />)
-                        ))}
                     </div>
+
                 </div>
 
                 {mainLoad ?

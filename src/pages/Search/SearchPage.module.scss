@@ -6,6 +6,8 @@
     display: flex;
     background-color: $accent;
     animation: load .15s linear;
+    border-top: 1em solid $accent;
+
 
     @media screen and (max-width: 1050px) {
         flex-direction: column;

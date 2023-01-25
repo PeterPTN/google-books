@@ -4,10 +4,7 @@
     flex: 1;
     display: flex;
     overflow-y: auto;
-    border-top: 1rem solid $accent;
-    border-left: 1rem solid $accent;
-    border-top-left-radius: 2em;
-    border-top-right-radius: 2em;
+    border-radius: 2em;
 
     &::-webkit-scrollbar {
         width: 1em;
@@ -26,76 +23,86 @@
     }
 
     &__display {
+        background-color: white;
         min-height: 100%;
         width: 100%;
         height: fit-content;
-        background-color: white;
-        padding: 1em 2em;
         display: flex;
         flex-direction: column;
         row-gap: .5em;
 
         @media screen and (max-width: 1050px) {
             overflow-y: auto;
+            margin-left: 1em;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            color: rgb(0, 0, 0, .85);
+        &_header {
+            position: sticky;
+            padding: 1em 2em 0em;
+            top: 0em;
+            z-index: 200;
+            display: flex;
+            transition: all .25s;
+            background-color: white;
 
             @media screen and (max-width: 1050px) {
-                text-align: center;
-            }
-        }
-
-        &_filter {
-            display: flex;
-            flex-direction: column;
-            row-gap: .75em;
-
-            h2 {
-                color: rgb(0, 0, 0, .45);
-                font-weight: 100;
-                font-size: 1rem;
+                justify-content: center;
             }
 
-            &_btns {
+            &_filter {
                 display: flex;
                 column-gap: .5em;
-                margin-bottom: .5em;
 
-                @media screen and (max-width: 650px) {
-                    flex-wrap: wrap;
+                @media screen and (max-width: 1050px) {
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    row-gap: .5em;
                 }
-            }
 
-            @media screen and (max-width: 1050px) {
-                align-items: center;
-                text-align: center;
+                h1 {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: rgb(0, 0, 0, .775);
+                }
+
+                &_btns {
+                    display: flex;
+                    column-gap: .5em;
+                    margin-bottom: .5em;
+
+                    @media screen and (max-width: 650px) {
+                        flex-wrap: wrap;
+                    }
+                }
             }
         }
 
         &_cards {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             row-gap: 1em;
             column-gap: 2em;
             animation: fade .15s;
+            padding: 0 1em;
 
             @media screen and (max-width: 1650px) {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(4, minmax(0, 1fr));
             }
 
-            @media screen and (max-width: 1350px) {
-                grid-template-columns: repeat(3, 1fr);
+            @media screen and (max-width: 1450px) {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
             }
 
-            @media screen and (max-width: 1050px) {
-                grid-template-columns: repeat(2, 1fr);
+            @media screen and (max-width: 1100px) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             @media screen and (max-width: 600px) {
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+
             }
         }
     }

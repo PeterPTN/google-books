@@ -1,7 +1,8 @@
 @use '../../styles/global.scss' as *;
 
 .BookCard {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 1em;
     box-shadow: 2px 3px 1em rgb(0, 0, 0, .05);
@@ -26,11 +27,14 @@
         padding: .5em 2em .5em;
     }
 
+    p:first-letter {
+        text-transform: capitalize;
+    }
+
     p {
         color: rgb(0, 0, 0, .7);
         margin-bottom: .5em;
         margin-top: auto;
-        text-transform: capitalize;
     }
 
     a {
@@ -40,6 +44,7 @@
     figure {
         margin-bottom: auto;
         position: relative;
+        width: 100%;
 
         img {
             border-radius: 1rem;

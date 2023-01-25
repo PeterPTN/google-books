@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Search from './pages/Search/SearchPage';
 import { ErrorPage } from './errors/ErrorPage';
 import { SEARCH_PARAMS } from './data/constants';
+import MainLoadProvider from './context/MainLoadProvider';
 
 interface ArrayTypes {
   id: number;
@@ -62,7 +63,9 @@ function App() {
   return (
     <>
       {/* RouteProvider will push to paths specified */}
-      <RouterProvider router={router} />
+      <MainLoadProvider>
+        <RouterProvider router={router} />
+      </MainLoadProvider>
     </>
   )
 }
