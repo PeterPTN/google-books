@@ -11,7 +11,7 @@
 
     @media screen and (max-width: 1050px) {
         height: auto;
-        min-width: auto;
+        min-width: 100%;
     }
 
     &__header {
@@ -80,6 +80,24 @@
         div:last-child {
             flex: 2;
             margin-bottom: 2em;
+        }
+
+        @media screen and (max-width: 1050px) {
+            margin-left: 1em;
+            height: 15em;
+            flex-direction: row;
+
+            div {
+                margin: 0em 0em 1em 0;
+            }
+
+            div:first-child, div:last-child {
+                margin-right: 1em;
+            }
+
+            div:last-child {
+                margin-bottom: 1em;
+            }
         }
     }
 }
