@@ -9,6 +9,7 @@
     font-size: 1rem;
     background: linear-gradient(to bottom, rgb(255, 255, 255) 75%, rgb(240, 241, 241));
     position: relative;
+    animation: load .25s linear forwards;
 
     h3 {
         position: absolute;
@@ -26,6 +27,16 @@
     a,
     h3 {
         color: rgb(0, 0, 0, .5)
+    }
+}
+
+@keyframes load {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
@@ -117,7 +128,7 @@
     column-gap: 2rem;
 
     @media screen and (max-width: 600px) {
-       align-items: flex-start;
+        align-items: flex-start;
     }
 }
 
