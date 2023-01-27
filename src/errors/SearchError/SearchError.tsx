@@ -1,6 +1,6 @@
 import style from './SearchError.module.scss';
 
-const ErrorComponent = () => {
+const SearchError = () => {
   return (
     <div className={style.Error}>
        <h1>That resulted in 0 matches!</h1>
@@ -9,4 +9,4 @@ const ErrorComponent = () => {
   )
 }
 
-export default ErrorComponent
+export default SearchError

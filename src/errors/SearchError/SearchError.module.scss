@@ -1,18 +1,16 @@
 @use '../../styles/global.scss' as *;
 
 .Error {
-    flex: 1;
-    border-top: 1rem solid $accent;
-    border-left: 1rem solid $accent;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
     background-color: white;
-    animation: load .25s linear;
+    animation: load .15s linear forwards;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: $secondary;
+    margin-top: 5em;
 
     h1 {
         font-weight: lighter;
@@ -21,9 +19,14 @@
     h2 {
         margin: .5em 0 5em 0;
     }
+
+    @media screen and (max-width: 1050px) {
+        height: 50vh;
+        margin-top: 0em;
+    }
 }
 
-@keyframes animation {
+@keyframes load {
     0% {
         opacity: 0;
     }

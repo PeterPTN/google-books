@@ -10,8 +10,6 @@ import Form from '../../components/Form/Form';
 interface PropType {
     onSearchSubmit: (input: string) => void,
     onSelect: (id: number) => void,
-    onUserInput: (e: { target: HTMLInputElement }) => void,
-    userInput: string,
     paramTypes: {
         id: number;
         type: string,
@@ -20,7 +18,7 @@ interface PropType {
     }[]
 }
 
-export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, paramTypes, userInput }: PropType) => {
+export const Homepage = ({ onSearchSubmit, onSelect, paramTypes }: PropType) => {
     const [displayAbout, setDisplayAbout] = useState(false);
     const AboutBtnStyles = displayAbout ? `${styles.AboutBtn} ${styles.AboutBtnBorder}` : `${styles.AboutBtn}`;
 
@@ -48,7 +46,7 @@ export const Homepage = ({ onUserInput, onSearchSubmit, onSelect, paramTypes, us
                 ))}
             </div>
 
-            <Form page="Home" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
+            <Form page="Home" onSearchSubmit={onSearchSubmit} />
 
             <h3>&copy; 2023 <a rel="noopener noreferrer" href="https://pptn-web-dev.netlify.app/">Peter Nguyen</a></h3>
 

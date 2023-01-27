@@ -5,16 +5,13 @@ import { useGoogleAPIRecall } from "../../hooks/useGoogleAPISearch"
 import styles from './SearchPage.module.scss';
 import DisplaySearch from "../../containers/DisplaySearch/DisplaySearch";
 import { FILTER_TYPE } from "../../data/constants";
-import ErrorComponent from "../../errors/SearchError/SearchError";
 import { MainLoadContext } from "../../context/MainLoadProvider";
 
 interface PropTypes {
   onSearchSelect: (id: number) => void,
   onSearchSubmit: (input: string) => void,
-  onUserInput: (e: { target: HTMLInputElement }) => void,
   query: string,
   API_KEY: string,
-  userInput: string,
   paramTypes: {
     id: number;
     displayTitle: string,
@@ -36,10 +33,9 @@ interface ArrayTypes {
   selected: boolean;
 }
 
-const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, userInput, onUserInput }: PropTypes) => {
+const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, }: PropTypes) => {
   const { setMainLoad } = useContext(MainLoadContext);
   const [isLoading, setIsLoading] = useState(true);
-  //const [mainLoad, setMainLoad] = useState(true);
   const [sideLoad, setSideLoad] = useState(false);
 
   const [filterTypes, setFilterTypes] = useState(FILTER_TYPE);
@@ -71,23 +67,18 @@ const Search = ({ query, API_KEY, paramTypes, onSearchSubmit, onSearchSelect, us
         paramTypes={paramTypes}
         onSearchSelect={onSearchSelect}
         onSearchSubmit={onSearchSubmit}
-        userInput={userInput}
-        onUserInput={onUserInput}
         previewData={extraBookData}
         sideLoad={sideLoad}
         setSideLoad={setSideLoad}
       />
 
-      {error ?
-        <ErrorComponent />
-        :
-        <DisplaySearch
-          books={data}
-          filterTypes={filterTypes}
-          onFilterClick={handleFilterClick}
-          onBookClick={handleBookClick}
-        />
-      }
+      <DisplaySearch
+        error={error}
+        books={data}
+        filterTypes={filterTypes}
+        onFilterClick={handleFilterClick}
+        onBookClick={handleBookClick}
+      />
     </div>
   )
 }

@@ -4,11 +4,14 @@ import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import Reload from '../../components/Reload/Reload';
 import { MainLoadContext } from '../../context/MainLoadProvider';
 import { useContext } from 'react';
+import SearchError from '../../errors/SearchError/SearchError';
+
 
 interface PropTypes {
     onBookClick: (data: any) => void,
     onFilterClick: (id: number) => void,
     books: any[],
+    error: boolean,
     filterTypes: {
         id: number;
         type: string,
@@ -17,8 +20,8 @@ interface PropTypes {
     }[]
 };
 
-const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick }: PropTypes) => {
-    const { mainLoad, setMainLoad } = useContext(MainLoadContext);
+const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick, error }: PropTypes) => {
+    const { mainLoad } = useContext(MainLoadContext);
 
     return (
         <div className={style.Wrapper}>
@@ -36,20 +39,21 @@ const DisplaySearch = ({ books, filterTypes, onFilterClick, onBookClick }: PropT
 
                 </div>
 
-                {mainLoad ?
-                    <Reload />
-                    :
-                    <div className={style.Wrapper__display_cards}>
-                        {books.map((book) => {
-                            return <BookCard
-                                key={book.id}
-                                data={book}
-                                saleInfo={book.saleInfo}
-                                volumeInfo={book.volumeInfo}
-                                onBookClick={onBookClick}
-                            />
-                        })}
-                    </div>
+                {mainLoad
+                    ? <Reload />
+                    : error
+                        ? <SearchError />
+                        : <div className={style.Wrapper__display_cards}>
+                            {books.map((book) => {
+                                return <BookCard
+                                    key={book.id}
+                                    data={book}
+                                    saleInfo={book.saleInfo}
+                                    volumeInfo={book.volumeInfo}
+                                    onBookClick={onBookClick}
+                                />
+                            })}
+                        </div>
                 }
             </div>
         </div>

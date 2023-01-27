@@ -14,7 +14,6 @@ interface ArrayTypes {
 }
 
 function App() {
-  const [userInput, setUserInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [paramTypes, setParamTypes] = useState(SEARCH_PARAMS);
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -31,9 +30,6 @@ function App() {
     }, []));
   }
 
-  const handleUserInput = (e: { target: HTMLInputElement }) => {
-    setUserInput(e.target.value);
-  }
 
   const router = createBrowserRouter([
     {
@@ -42,8 +38,6 @@ function App() {
         onSearchSubmit={handleSubmit}
         paramTypes={paramTypes}
         onSelect={handleSearchSelect}
-        onUserInput={handleUserInput}
-        userInput={userInput}
       />,
       errorElement: <ErrorPage />,
     },
@@ -53,8 +47,6 @@ function App() {
         paramTypes={paramTypes}
         onSearchSubmit={handleSubmit}
         onSearchSelect={handleSearchSelect}
-        onUserInput={handleUserInput}
-        userInput={userInput}
         query={searchQuery}
         API_KEY={API_KEY} />,
     }

@@ -9,10 +9,8 @@ interface PropTypes {
     onSearchSelect: (id: number) => void,
     setSideLoad: (arg0: boolean) => void;
     onSearchSubmit: (input: string) => void,
-    onUserInput: (e: { target: HTMLInputElement }) => void,
     setMainLoad: (arg0: boolean) => void,
     sideLoad: boolean,
-    userInput: string,
     previewData: null | any,
     paramTypes: {
         id: number;
@@ -22,7 +20,7 @@ interface PropTypes {
     }[]
 }
 
-const SideDisplay = ({ setMainLoad, previewData, userInput, paramTypes, onSearchSubmit, onSearchSelect, onUserInput, sideLoad, setSideLoad }: PropTypes) => {
+const SideDisplay = ({ setMainLoad, previewData, paramTypes, onSearchSubmit, onSearchSelect, sideLoad, setSideLoad }: PropTypes) => {
     return (
         <div className={styles.SideDisplay}>
             <div className={styles.SideDisplay__header}>
@@ -31,7 +29,7 @@ const SideDisplay = ({ setMainLoad, previewData, userInput, paramTypes, onSearch
                     <img src={Google} />
                 </div>
 
-                <Form setMainLoad={setMainLoad} page="Side" userInput={userInput} onSearchSubmit={onSearchSubmit} onUserInput={onUserInput} />
+                <Form setMainLoad={setMainLoad} page="Side" onSearchSubmit={onSearchSubmit} />
                 <div className={styles.SideDisplay__header_filter}>
                     {
                         paramTypes.map((filterType) => (

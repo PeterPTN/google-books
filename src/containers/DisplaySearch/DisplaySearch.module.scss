@@ -29,7 +29,6 @@
         flex-direction: column;
         row-gap: .5em;
 
-
         @media screen and (max-width: 1050px) {
             border-top-right-radius: 2em;
             overflow-y: auto;
@@ -90,7 +89,7 @@
             grid-template-columns: repeat(5, minmax(0, 1fr));
             row-gap: 1em;
             column-gap: 2em;
-            animation: fade .15s;
+            animation: fade .25s;
             padding: 1em 1.5em 1.5em;
 
             @media screen and (max-width: 1650px) {
