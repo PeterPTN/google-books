@@ -4,6 +4,7 @@
     flex: 1;
     display: flex;
     overflow-y: auto;
+    border-top-left-radius: 2em;
 
     &::-webkit-scrollbar {
         width: 1em;
