@@ -48,7 +48,7 @@ export const Homepage = ({ onSearchSubmit, onSelect, paramTypes }: PropType) => 
 
             <Form page="Home" onSearchSubmit={onSearchSubmit} />
 
-            <h3>&copy; 2023 <a rel="noopener noreferrer" href="https://pptn-web-dev.netlify.app/">Peter Nguyen</a></h3>
+            <h3>&copy; 2023 <a rel="noopener noreferrer" href="https://pptn-portfolio.netlify.app">Peter Nguyen</a></h3>
 
             <Rectangle type={`${recStyles.RectangleOne} `} />
             <Rectangle type={`${recStyles.RectangleTwo} `} />
